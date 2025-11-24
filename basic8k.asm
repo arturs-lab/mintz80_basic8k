@@ -5064,7 +5064,7 @@ NRNDX:  DB      1BH,0ECH
         DB      2BH,1EH
 WHATL:  DB      'WHAT',0
 VERS    EQU     $       ;VERSION MESSAGE
-        DB      '9K VERS 1.4',0
+        DB      $0d,$0a,'9K VERS 1.4',0
 RBOUT:  DB      08H,20H,08H,0FEH ;RUBOUT SEQUENCE (9K ONLY)
 LLINE:  DB      'LINE',0
 TABLI:  DB      'TAB',0
@@ -5848,13 +5848,13 @@ PROGE:  DS      2       ;ADDRESS OF PROGRAM END
 BEGPR:
 ;
 		org $3DD0
-	db "IMSAI 9K BASIC v1.4 0D974B",0
+	db "IMSAI 9K BASIC v1.4 0D975B",0
 
 
 		org $3DF7
 	dw ROMEN-BASIC	; data length
 	dw BASIC		; jump to addess
 	dw BASIC		; load address
-	db $0d,$97,$4b	; checksum
+	db $0d,$97,$5b	; checksum
         END
 
