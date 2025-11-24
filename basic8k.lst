@@ -5834,7 +5834,14 @@
 2695                          DS   1   ;DATA STATEMENT FLAG (MUST BE HERE)
 2696                BEGPR:       
 2696                             ; 
-2696                          END      
+3DD0                          .ORG   $3DD0   
+3DD0   49 4D 53 41 49 20 39 4B 20 42 41 53 49 43 20 76 31 2E 34 20 30 44 39 37 34 42 00 DB   "IMSAI 9K BASIC v1.4 0D974B",0   
+3DF7                          .ORG   $3DF7   
+3DF7   04 22                  DW   ROMEN-BASIC   ; data length
+3DF9   00 00                  DW   BASIC   ; jump to addess
+3DFB   00 00                  DW   BASIC   ; load address
+3DFD   0D 97 4B               DB   $0d,$97,$4b   ; checksum
+3E00                          END      
 
 
 SIO_RX:             0018 DEFINED AT LINE 69
@@ -5865,6 +5872,9 @@ RUBOUT:             0008 DEFINED AT LINE 78
 FATAL:              00F7 DEFINED AT LINE 83
                     > USED AT LINE 4868
 BASIC:              0000 DEFINED AT LINE 85
+                    > USED AT LINE 5855
+                    > USED AT LINE 5856
+                    > USED AT LINE 5857
 RST1:               0008 DEFINED AT LINE 96
                     > USED AT LINE 100
 RST2:               0010 DEFINED AT LINE 110
@@ -7605,6 +7615,7 @@ POKE:               21D8 DEFINED AT LINE 5738
 JUMP:               21F6 DEFINED AT LINE 5759
                     > USED AT LINE 5214
 ROMEN:              2204 DEFINED AT LINE 5771
+                    > USED AT LINE 5855
 RAM:                2400 DEFINED AT LINE 5779
                     > USED AT LINE 86
 BZERO:              2400 DEFINED AT LINE 5781

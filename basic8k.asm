@@ -5847,5 +5847,14 @@ PROGE:  DS      2       ;ADDRESS OF PROGRAM END
         DS      1       ;DATA STATEMENT FLAG (MUST BE HERE)
 BEGPR:
 ;
+		org $3DD0
+	db "IMSAI 9K BASIC v1.4 0D974B",0
+
+
+		org $3DF7
+	dw ROMEN-BASIC	; data length
+	dw BASIC		; jump to addess
+	dw BASIC		; load address
+	db $0d,$97,$4b	; checksum
         END
 
