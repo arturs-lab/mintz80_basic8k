@@ -1,0 +1,6 @@
+dump memory at $BEB0 which is interrupt counter for $a000 monitor
+
+10 N=48816
+20 FOR I=N TO N+20
+30 PRINT PEEK(I);
+40 NEXT I
