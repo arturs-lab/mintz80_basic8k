@@ -21,6 +21,10 @@ dump memory at $BEB0 which is interrupt counter for $a000 monitor
 140 NEXT I
 150 PRINT T$
 160 NEXT N
+170 PRINT "N - NEXT, P - PREVIOUS, Q - QUIT";
+180 INPUT A$
+190 IF A$="N" THEN S=S+256 : GOTO 30
+200 IF A$="P" THEN S=S-256 : GOTO 30
 999 END
 1000 K=INT(J/16):L=J-K*16
 1010 PRINT MID$(H$,K+1,1);MID$(H$,L+1,1);
