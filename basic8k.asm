@@ -4248,9 +4248,9 @@ TREAD   EQU     $
         JZ      TREAD			;LOOP TIL CHAR
         CALL    GETCH   ;GO READ THE CHAR
         MOV     M,A     ;PUT IN BUFFER
-        CPI     0AH     ;TEST IF LINE FEED
-        JZ      TREAD   ;IGNORE IF IT IS
         CPI     0DH     ;TEST IF CR
+        JZ      TREAD   ;IGNORE IF IT IS
+        CPI     0AH     ;TEST IF LF
         JNZ     NOTCR   ;BRIF NOT
         LDA     TAPES   ;GET PAPER TAPE SWITCH
         RAR             ;TEST IF LOAD
@@ -4308,11 +4308,12 @@ NOTCO:  CPI     RUBOUT     ;TEST IF RUBOUT 7fh
         MOV     A,M     ;LOAD PREV CHAR
         ORA     A       ;TEST IF BEGIN
         JZ      ECHO    ;BRIF IS
-        MVI     A,0x5c  ;'\'   ;BACK SLASH
-        CALL    TESTO   ;WRITE IT
-        MOV     A,M     ;FETCH CHARACTER TO BE DISCARDED
-        CALL    TESTO   ;WRITE IT
-        MVI     A,0x5c  ;'\'   ;BACK SLASH
+        MVI     A,0X08
+;        MVI     A,0x5c  ;'\'   ;BACK SLASH
+;        CALL    TESTO   ;WRITE IT
+;        MOV     A,M     ;FETCH CHARACTER TO BE DISCARDED
+;        CALL    TESTO   ;WRITE IT
+;        MVI     A,0x5c  ;'\'   ;BACK SLASH
         CALL    TESTO   ;WRITE IT
         JMP     TREAD   ;GET REPLACEMENT CHARACTER
 
@@ -5855,6 +5856,5 @@ BEGPR:
 	dw ROMEN-BASIC	; data length
 	dw BASIC		; jump to addess
 	dw BASIC		; load address
-	db $0d,$97,$5b	; checksum
+	db $0d,$97,$5B	; checksum
         END
-
